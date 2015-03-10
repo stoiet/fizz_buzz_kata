@@ -1,0 +1,21 @@
+{
+  "name": "fizz_buzz_kata",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha specs/."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoiet/fizz_buzz_kata.git"
+  },
+  "author": "stoiet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stoiet/fizz_buzz_kata/issues"
+  },
+  "homepage": "https://github.com/stoiet/fizz_buzz_kata",
+  "devDependencies": {
+    "chai": "^2.1.1"
+  }
+}
