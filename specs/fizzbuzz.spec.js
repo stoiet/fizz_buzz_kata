@@ -6,7 +6,7 @@ describe('FizzBuzz', function() {
     describe('#generate', function() {
        
         beforeEach(function() {
-           this.fizzBuzz = new FizzBuzz.FizzBuzz(FizzBuzz.FizzBuzzTranslator([
+           this.fizzBuzz = new FizzBuzz.FizzBuzz(new FizzBuzz.FizzBuzzTranslator([
                     new FizzBuzz.DividerBasedTranslator(3, 'Fizz'),
                     new FizzBuzz.DividerBasedTranslator(5, 'Buzz'),
                     new FizzBuzz.DefaultTranslator()
