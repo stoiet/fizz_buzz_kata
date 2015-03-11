@@ -1,83 +1,88 @@
-'use strict';
+"use strict";
 
 var DividerBasedTranslator = (function() {
     
-    function DividerBasedTranslator(divider, returnValue) {
+    function InnerDividerBasedTranslator(divider, returnValue) {
         this.divider = divider;
         this.returnValue = returnValue;
-    };
+    }
     
-    DividerBasedTranslator.prototype.translate = function(number, translatedValue) {
-        var result = '';
+    InnerDividerBasedTranslator.prototype.translate = function(number) {
+        var result = "";
         
-        if (number %  this.divider == 0)
+        if (number % this.divider === 0)
+        {
             result = this.returnValue;
+        }
             
         return result;
     };
     
-    return DividerBasedTranslator;
-    
+    return InnerDividerBasedTranslator;
 })();
 
 var DefaultTranslator = (function() {
+    function InnerDefaultTranslator() {}
     
-    function DefaultTranslator() {};
-    
-    DefaultTranslator.prototype.translate = function(number, translatedValue) {
-        var result = '';
+    InnerDefaultTranslator.prototype.translate = function(number, translatedValue) {
+        var result = "";
         
-        if (translatedValue == '')
+        if (translatedValue === "")
+        {
             result = number.toString();
+        }
             
         return result;
     };
     
-    return DefaultTranslator;
-    
+    return InnerDefaultTranslator;
 })();
 
 var FizzBuzzTranslator = (function() {
         
-    function FizzBuzzTranslator(rules) {
+    function InnerFizzBuzzTranslator(rules) {
         this.rules = rules;
-    };
+    }
     
-    FizzBuzzTranslator.prototype.translate = function(number) {
-        var translated = '';
+    InnerFizzBuzzTranslator.prototype.translate = function(number) {
+        var translated = "";
         
         for(var i = 0; i < this.rules.length; ++i)
+        {
             translated += this.rules[i].translate(number, translated);
+        }
             
         return translated;
     };
     
-    return FizzBuzzTranslator;
-    
+    return InnerFizzBuzzTranslator;
 })();
 
 var FizzBuzz = (function() {
     
-    function FizzBuzz(fizzBuzzTranslator) {
+    function InnerFizzBuzz(fizzBuzzTranslator) {
         this.fizzBuzzTranslator = fizzBuzzTranslator;
-    };
+    }
     
-    FizzBuzz.prototype.generate = function(min, max) {
+    InnerFizzBuzz.prototype.generate = function(min, max) {
         var fizzBuzzArray = [];
         
         for(var i = min; i < max + 1; ++i)
+        {
             fizzBuzzArray.push(this.fizzBuzzTranslator.translate(i));
+        }
         
         return fizzBuzzArray;
     };
     
-    return FizzBuzz;
-    
+    return InnerFizzBuzz;
 })();
 
 module.exports = {
+    
     FizzBuzz: FizzBuzz,
     FizzBuzzTranslator: FizzBuzzTranslator,
     DividerBasedTranslator: DividerBasedTranslator,
     DefaultTranslator: DefaultTranslator
+    
 };
