@@ -22,6 +22,7 @@ var DividerBasedTranslator = (function() {
 })();
 
 var DefaultTranslator = (function() {
+    
     function InnerDefaultTranslator() {}
     
     InnerDefaultTranslator.prototype.translate = function(number, translatedValue) {
